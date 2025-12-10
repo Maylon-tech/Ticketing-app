@@ -1,0 +1,21 @@
+{
+  "name": "ticket-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "autoprefixer": "10.4.22",
+    "eslint": "9.39.1",
+    "eslint-config-next": "16.0.8",
+    "next": "16.0.8",
+    "postcss": "8.5.6",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
+    "tailwindcss": "4.1.17"
+  }
+}
