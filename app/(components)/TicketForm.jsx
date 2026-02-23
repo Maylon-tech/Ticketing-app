@@ -30,10 +30,10 @@ const TicketForm = () => {
 
   return (
     <div className='flex justify-center'>
-      <form action="">
+      <form action="" className='rounded-xl p-4'>
         <h3>Create Your ticket</h3>
 
-        <label htmlFor="">Title</label>
+        <label className='mt-4' htmlFor="">Title</label>
         <input
           type="text"
           id='title'
@@ -41,6 +41,7 @@ const TicketForm = () => {
           onChange={handleChange}
           required={true}
           value={formData.title}
+          className='m-1 rounded bg-card p-1'
         />
       </form>
     </div>
