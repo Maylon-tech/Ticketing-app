@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { useRouter } from 'next/navigation'
-import useState from 'react'
+import { useState } from 'react'
 
 
 const TicketForm = () => {
@@ -10,52 +10,51 @@ const TicketForm = () => {
   const handleChange = (e) => {
     const value = e.target.value
     const name = e.target.value
-
+    
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
     }))
-
+    
   }
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const res = await fetch("api/Tickets", {
+
+    const res = await fetch("/api/Tickets", {
       method: "POST",
       body: JSON.stringify({ formData }),
       "content-type": "application/json"
     })
-
+    
     if (!res.ok) {
       throw new Error("Failed to create ticket..!")
     }
-
+    
     router.refresh()
     router.push("/")
   }
 
   const startingTicketData = {
-      title: "",
-      description: "",
-      priority: 1,
-      progress: 0,
-      status: "Not Started",
-      category: "Hardware Problem",
+    title: "",
+    description: "",
+    priority: 1,
+    progress: 0,
+    status: "Not Started",
+    category: "Hardware Problem",
   }
-
   const [formData, setFormData] = useState(startingTicketData)
 
   return (
     <div className='flex justify-center'>
       <form
-        action=""
-        className='rounded-xl p-4'
+        className='flex flex-col w-[70%] rounded-xl p-4'
         method="post"
         onSubmit={handleSubmit}
       >
-        <h3>Create Your ticket</h3>
+        <h3 className='text-2xl font-bold'>Create Your ticket</h3>
 
-        <label className='mt-4' htmlFor="">Title</label>
+        <label className='mt-4 text-xl' htmlFor="">Title</label>
         <input
           type="text"
           id='title'
@@ -63,10 +62,10 @@ const TicketForm = () => {
           onChange={handleChange}
           required={true}
           value={formData.title}
-          className='m-1 rounded bg-card p-1'
+          className='m-1 rounded bg-slate-500/50 bg-card p-1 outline-none'
         />
 
-        <label className='mt-4' htmlFor="">Description</label>
+        <label className='mt-4 text-xl' htmlFor="">Description</label>
         <input
           type="text"
           id='description'
@@ -74,32 +73,33 @@ const TicketForm = () => {
           onChange={handleChange}
           required={true}
           value={formData.description}
-          className='m-1 rounded bg-card p-1'
+          className='m-1 rounded bg-card p-1 bg-slate-500/50 outline-none'
         />
 
-        <label className='mt-4' htmlFor="">Category</label>
+        <label className='mt-4 text-xl' htmlFor="">Category</label>
         <select
           name='title'
           onChange={handleChange}
           value={formData.category}
-          className='m-1 rounded bg-card p-1'
+          className='m-1 rounded bg-card p-1 bg-slate-500/50 outline-none'
         >
           <option value="Hardware Problem">Hardware Problem</option>  
           <option value="Software Problem">Software Problem</option>  
           <option value="Project">Project</option>  
         </select>
 
-        <label htmlFor="">Priority</label>
-        <div>
+        <label className='mt-4 text-xl' htmlFor="">Priority</label>
+        <div className=' p-2'>
           <input
             id='priority-1'
             type="radio"
             name='priority'
             onChange={handleChange}
             value={1}
-            checked={formData.priority == 1 }
+            checked={formData.priority == 1}
+            className='mr-1'
           />
-           <label htmlFor="">1</label>
+           <label  className='pr-4' htmlFor="">1</label>
         
           <input
             id='priority-2'
@@ -107,9 +107,10 @@ const TicketForm = () => {
             name='priority'
             onChange={handleChange}
             value={2}
-            checked={formData.priority == 2 }
+            checked={formData.priority == 2}
+            className='mr-1'
           />
-           <label htmlFor="">2</label>
+           <label className='pr-4' htmlFor="">2</label>
         
           <input
             id='priority-3'
@@ -117,9 +118,10 @@ const TicketForm = () => {
             name='priority'
             onChange={handleChange}
             value={3}
-            checked={formData.priority == 3 }
+            checked={formData.priority == 3}
+            className='mr-1'
           />
-           <label htmlFor="">3</label>
+           <label className='pr-4' htmlFor="">3</label>
        
           <input
             id='priority-4'
@@ -127,9 +129,10 @@ const TicketForm = () => {
             name='priority'
             onChange={handleChange}
             value={4}
-            checked={formData.priority == 4 }
+            checked={formData.priority == 4}
+            className='mr-1'
           />
-           <label htmlFor="">4</label>
+           <label className='pr-4' htmlFor="">4</label>
        
           <input
             id='priority-5'
@@ -138,11 +141,12 @@ const TicketForm = () => {
             onChange={handleChange}
             value={5}
             checked={formData.priority == 5 }
+            className='mr-1'
           />
            <label htmlFor="">5</label>
         </div>
 
-        <label htmlFor="">Progress</label>
+        <label className='mt-4 text-xl' htmlFor="">Progress</label>
         <input
           type="range"
           id='progress'
@@ -152,11 +156,12 @@ const TicketForm = () => {
           max="100"
           onChange={handleChange}
         />
-        <label htmlFor="">Status</label>
+        <label className='mt-4 text-xl' htmlFor="">Status</label>
         <select
           name='status'
           value={formData.status}
           onChange={handleChange}
+          className='m-1 rounded bg-card p-1 bg-slate-500/50 outline-none'
         >
           <option value="not started">Not Started</option>
           <option value="started">Started</option>
@@ -165,7 +170,7 @@ const TicketForm = () => {
 
         <input
           type="submit"
-          className='btn max-w-xs'
+          className='btn p-2 bg-blue-600 rounded-lg mt-4 text-xl'
           value="Create Ticket"
         />
       </form>

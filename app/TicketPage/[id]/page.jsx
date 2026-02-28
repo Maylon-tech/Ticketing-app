@@ -4,9 +4,7 @@ import React from 'react'
 
 const TickePage = () => {
   return (
-    <div>
-      <h2>TickePage Official</h2>
-
+    <div className='p-12'>
       <TicketForm />
     </div>
   )
