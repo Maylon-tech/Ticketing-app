@@ -21,10 +21,10 @@ const TicketForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const res = await fetch("/api/Tickets", {
+    const res = await fetch("/api/tickets", {
       method: "POST",
       body: JSON.stringify({ formData }),
-      "content-type": "application/json"
+      "Content-Type": "application/json"
     })
     
     if (!res.ok) {
