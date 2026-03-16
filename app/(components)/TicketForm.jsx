@@ -21,7 +21,7 @@ const TicketForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const res = await fetch("/api/tickets", {
+    const res = await fetch("/api/Tickets", {
       method: "POST",
       body: JSON.stringify({ formData }),
       "Content-Type": "application/json"
@@ -54,7 +54,7 @@ const TicketForm = () => {
       >
         <h3 className='text-2xl font-bold'>Create Your ticket</h3>
 
-        <label className='mt-4 text-xl' htmlFor="">Title</label>
+        <label className='mt-4 text-xl'>Title</label>
         <input
           type="text"
           id='title'
@@ -65,9 +65,8 @@ const TicketForm = () => {
           className='m-1 rounded bg-slate-500/50 bg-card p-1 outline-none'
         />
 
-        <label className='mt-4 text-xl' htmlFor="">Description</label>
-        <input
-          type="text"
+        <label className='mt-4 text-xl'>Description</label>
+        <textarea         
           id='description'
           name='description'
           onChange={handleChange}

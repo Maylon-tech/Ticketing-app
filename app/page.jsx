@@ -3,7 +3,7 @@ import TicketCard from "./(components)/TicketCard.jsx"
 
 const getTickets = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/tickets", {
+    const res = await fetch("http://localhost:3000/api/Tickets", {
       cache: "no-store",
     })
     return res.json()
@@ -29,12 +29,15 @@ const Dashboard = async () => {
               <h2>{uniqueCategory}</h2>
               <div className="lg:grid grid-cols-2 xl:grid-cols-4">  
                 {
-                  tickets.filter((ticket) => ticket.category === uniqueCategory).map((filteredticket, _index) => (
-                    <TicketCard
-                      id={_index}
-                      key={_index}
-                      ticket={filteredticket} />
-                  ))
+                  tickets
+                    .filter((ticket) => ticket.category === uniqueCategory)
+                    .map((filteredticket, _index) => (
+                      <TicketCard
+                        id={_index}
+                        key={_index}
+                        ticket={filteredticket} 
+                      />
+                    ))
                 }
               </div>
             </div>

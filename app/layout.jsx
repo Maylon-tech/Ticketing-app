@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Ticketing App',
-  description: 'Application with Ticket flow on System',
+  description: 'Application with Ticket System',
 }
 
 export default function RootLayout({ children }) {
